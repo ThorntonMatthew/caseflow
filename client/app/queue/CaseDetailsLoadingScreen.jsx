@@ -16,7 +16,7 @@ import {
   resetSuccessMessages,
   resetSaveState
 } from './uiReducer/uiActions';
-import { onReceiveAppealDetails, onReceiveTasks, setAttorneysOfJudge, fetchAllAttorneys } from './QueueActions';
+import { onReceiveAppealDetails, onReceiveTasks, setAttorneysOfJudge, fetchAllAttorneys, fetchDecisionDocument } from './QueueActions';
 
 class CaseDetailsLoadingScreen extends React.PureComponent {
   componentWillUnmount = () => {
@@ -77,9 +77,29 @@ class CaseDetailsLoadingScreen extends React.PureComponent {
     return this.loadAttorneysOfJudge();
   }
 
+  loadDecisionDocument = () => {
+    console.log('appeal', this.props.appealId)
+    
+    /*return ApiUtil.get(`/reader/appeal/${this.props.appealId}/documents?json`).
+      then(
+        (resp) => {
+          console.log('resp',resp)
+        });*/
+    
+  }
+
+  maybeLoadDecisionDocumentData = () => {
+    //need to set userIsVsoEmployee
+
+    this.props.fetchDecisionDocument();
+
+    return this.loadDecisionDocument();
+  }
+
   createLoadPromise = () => Promise.all([
     this.loadActiveAppealAndTask(),
-    this.maybeLoadJudgeData()
+    this.maybeLoadJudgeData(),
+    this.maybeLoadDecisionDocumentData()
   ]);
 
   render = () => {
@@ -124,6 +144,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   onReceiveAppealDetails,
   setAttorneysOfJudge,
   fetchAllAttorneys,
+  fetchDecisionDocument,
   resetErrorMessages,
   resetSuccessMessages,
   resetSaveState
@@ -139,6 +160,7 @@ CaseDetailsLoadingScreen.propTypes = {
   onReceiveAppealDetails: PropTypes.func,
   setAttorneysOfJudge: PropTypes.func,
   fetchAllAttorneys: PropTypes.func,
+  fetchDecisionDocument: PropTypes.func,
   resetErrorMessages: PropTypes.func,
   resetSuccessMessages: PropTypes.func,
   resetSaveState: PropTypes.func,

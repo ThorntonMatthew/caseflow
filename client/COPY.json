@@ -90,6 +90,7 @@
   "TASK_SNAPSHOT_ASSIGNED_JUDGE_LABEL": "VLJ",
   "TASK_SNAPSHOT_ASSIGNED_ATTORNEY_LABEL": "Attorney",
   "TASK_SNAPSHOT_DECISION_DOCUMENT_ID_LABEL": "Decision Document ID",
+  "TASK_SNAPSHOT_DECISION_DOCUMENT_LINK_LABEL": "Decision Document",
   "TASK_SNAPSHOT_REMOVE_OVERTIME_HEADER": "Remove overtime status",
   "TASK_SNAPSHOT_REMOVE_OVERTIME_CONFIRMATION": "This case is marked for overtime. Do you want to remove overtime status from this case?",
   "TASK_SNAPSHOT_REMOVE_OVERTIME_SUCCESS": "%s's case has been removed from overtime status",

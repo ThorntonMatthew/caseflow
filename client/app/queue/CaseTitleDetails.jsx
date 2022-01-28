@@ -114,6 +114,7 @@ export class CaseTitleDetails extends React.PureComponent {
     const {
       appeal,
       appealId,
+      appealIsDispatched,
       redirectUrl,
       taskType,
       userIsVsoEmployee,
@@ -240,6 +241,14 @@ export class CaseTitleDetails extends React.PureComponent {
                 &nbsp;{appeal.overtime ? COPY.TASK_SNAPSHOT_IS_OVERTIME : COPY.TASK_SNAPSHOT_IS_NOT_OVERTIME}
               </span>
             </Button>
+          </TitleDetailsSubheaderSection>
+        )}
+        {userIsVsoEmployee && appealIsDispatched && featureToggles.send_email_for_dispatched_appeals && (
+          <TitleDetailsSubheaderSection title={COPY.TASK_SNAPSHOT_DECISION_DOCUMENT_LINK_LABEL}>
+            {/*
+            <a href={`${doc.content_url}?type=${doc.type}&download=true`}>View decision</a>
+            */}
+            {console.log('appealIsDispatched',appealIsDispatched)}
           </TitleDetailsSubheaderSection>
         )}
       </TitleDetailsSubheader>

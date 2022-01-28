@@ -253,6 +253,7 @@ export const CaseDetailsView = (props) => {
         )}
         <CaseTitleDetails
           appealId={appealId}
+          appealIsDispatched={appealIsDispatched}
           redirectUrl={window.location.pathname}
           userCanAccessReader={props.userCanAccessReader}
         />

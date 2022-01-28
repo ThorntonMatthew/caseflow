@@ -75,6 +75,19 @@ export const fetchJudges = () => (dispatch) => {
   });
 };
 
+export const fetchDecisionDocument = () => (dispatch) => {
+  /* TODO determine appropriate API call to make
+  ApiUtil.get('').then((response) => {
+    dispatch({
+      type: ACTIONS.RECEIVE_DECISION_DOCUMENT,
+      payload: {
+        doc
+      }
+    });
+  });
+  */
+};
+
 export const receiveNewDocumentsForAppeal = ({ appealId, newDocuments }) => ({
   type: ACTIONS.RECEIVE_NEW_FILES_FOR_APPEAL,
   payload: {
