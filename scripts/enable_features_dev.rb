@@ -62,7 +62,7 @@ all_features.map! { |feature| feature.split(",")[0] }
 all_features.reject! { |toggle| vexing_flags.include? toggle }
 
 all_features.each_with_object([]) do |feature, result|
-  result << { "feature" => feature, "enable_all" => false }
+  result << { "feature" => feature, "enable_all" => true }
   FeatureToggle.sync! result.to_yaml
 end
 

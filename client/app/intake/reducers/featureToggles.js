@@ -27,7 +27,7 @@ export const mapDataToFeatureToggle = (data = { featureToggles: {} }) =>
   updateFromServerFeatures(
     {
       useAmaActivationDate: false,
-      vhaPreDocketAppeals: true,
+      vhaPreDocketAppeals: false,
       correctClaimReviews: false,
       filedByVaGovHlr: false,
       updatedIntakeForms: false,
