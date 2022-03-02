@@ -65,6 +65,8 @@ class Task < CaseflowRecord
 
   scope :active, -> { where(status: active_statuses) }
 
+  scope :unassigned, -> { where(status: unassigned_statuses) }
+
   scope :open, -> { where(status: open_statuses) }
 
   scope :closed, -> { where(status: closed_statuses) }
@@ -114,6 +116,10 @@ class Task < CaseflowRecord
 
     def active_statuses
       [Constants.TASK_STATUSES.assigned, Constants.TASK_STATUSES.in_progress]
+    end
+
+    def unassigned_statuses
+      [Constants.TASK_STATUSES.unassigned]
     end
 
     def open_statuses
@@ -335,6 +341,11 @@ class Task < CaseflowRecord
   # on_hold is not included
   def active?
     self.class.active_statuses.include?(status)
+  end
+
+
+  def unassigned?
+    self.class.unassigned_statuses.include?(status)
   end
 
   # available_actions() returns an array of options selected by

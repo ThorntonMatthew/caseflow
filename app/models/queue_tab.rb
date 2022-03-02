@@ -103,6 +103,10 @@ class QueueTab
     Task.includes(*task_includes).visible_in_queue_table_view.where(assigned_to: assignee).assigned
   end
 
+  def unassigned_tasks
+    Task.includes(*task_includes).visible_in_queue_table_view.where(assigned_to: assignee).unassigned
+  end
+
   def closed_tasks
     Task.includes(*task_includes).visible_in_queue_table_view.where(assigned_to: assignee).closed
   end

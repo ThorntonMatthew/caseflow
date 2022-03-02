@@ -13,10 +13,16 @@ class VhaCamo < Organization
 
   def queue_tabs
     [
+      unassigned_tasks_tab, #My new tab!
       assigned_tasks_tab,
       in_progress_tasks_tab,
       completed_tasks_tab
     ]
+  end
+
+  def unassigned_tasks_tab
+    # My new tab's definition!
+    ::VhaCamoUnassignedTasksTab.new(assignee: self)
   end
 
   def assigned_tasks_tab
