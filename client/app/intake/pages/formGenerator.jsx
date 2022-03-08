@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { reject, map } from 'lodash';
 import RadioField from '../../components/RadioField';
 import ReceiptDateInput from './receiptDateInput';
-import { setDocketType } from '../actions/appeal';
+import SearchableDropdown from '../../components/SearchableDropdown';
+import { setDocketType, setHearingType } from '../actions/appeal';
 import { setReceiptDate, setOptionSelected } from '../actions/intake';
 import { setAppealDocket, confirmIneligibleForm } from '../actions/rampRefiling';
 import { toggleIneligibleError, convertStringToBoolean } from '../util';
@@ -37,6 +38,12 @@ const docketTypeRadioOptions = [
     displayText: 'Evidence Submission' },
   { value: 'hearing',
     displayText: 'Hearing' }
+];
+
+const hearingTypeOpts = [
+  { value: 'hard-at', label: 'Hard at Hearing' },
+  { value: 'loud-clear', label: 'Loud and Clear' },
+  { value: 'herring', label: 'Did you mean herring?' },
 ];
 
 const rampElectionReviewOptions = reject(REVIEW_OPTIONS, REVIEW_OPTIONS.APPEAL);
@@ -82,6 +89,25 @@ const formFieldMapping = (props) => {
         inputRef={props.register}
       />
     </div>,
+    'hearing-type':
+    (props.docketType === 'hearing' ?
+      (<div className="cs-hearing-type" style={{marginTop: '10px' }}>
+        <SearchableDropdown
+          name="hearing-type"
+          label="Hearing Type"
+          options={hearingTypeOpts}
+          value={props.hearingType}
+          inputRef={props.register} //Don't think this is correct
+          onChange={(valObj) => {
+            props.setHearingType(valObj.value);
+          }}
+          strongLabel
+        />
+      </div>) :
+      // probably need to validate that hearingType = null
+      // if docketType is changed from hearing.
+      null),
+
     'legacy-opt-in': <LegacyOptInApproved
       value={props.legacyOptInApproved}
       onChange={props.setLegacyOptInApproved}
@@ -261,7 +287,9 @@ FormGenerator.propTypes = {
   requestState: PropTypes.string,
   register: PropTypes.func,
   errors: PropTypes.array,
-  intakeId: PropTypes.string
+  intakeId: PropTypes.string,
+  hearingType: PropTypes.string,
+  setHearingType: PropTypes.func,
 };
 
 export default connect(
@@ -291,10 +319,12 @@ export default connect(
     veteranValid: state[props.formName].veteranValid,
     veteranInvalidFields: state[props.formName].veteranInvalidFields,
     hasInvalidOption: state[props.formName].hasInvalidOption,
-    confirmIneligibleForm: state[props.formName].confirmIneligibleForm
+    confirmIneligibleForm: state[props.formName].confirmIneligibleForm,
+    hearingType: state[props.formName].hearingType,
   }),
   (dispatch) => bindActionCreators({
     setDocketType,
+    setHearingType,
     setReceiptDate,
     setLegacyOptInApproved,
     setInformalConference,

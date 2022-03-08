@@ -21,6 +21,9 @@ const updateFromServerIntake = (state, serverIntake) => {
     ...commonState,
     docketType: {
       $set: serverIntake.docketType
+    },
+    hearingType: {
+      $set: serverIntake.hearingType
     }
   });
 };
@@ -37,6 +40,7 @@ export const mapDataToInitialAppeal = (data = { serverIntake: {} }) => (
     filedByVaGovError: null,
     docketType: null,
     docketTypeError: null,
+    hearingType: null,
     veteranIsNotClaimant: null,
     veteranIsNotClaimantError: null,
     claimant: null,
@@ -96,6 +100,12 @@ export const appealReducer = (state = mapDataToInitialAppeal(), action) => {
     return update(state, {
       docketType: {
         $set: action.payload.docketType
+      }
+    });
+  case ACTIONS.SET_HEARING_TYPE:
+    return update(state, {
+      hearingType: {
+        $set: action.payload.hearingType
       }
     });
   case ACTIONS.SET_FILED_BY_VA_GOV:

@@ -11,3 +11,15 @@ export const setDocketType = (docketType) => ({
     }
   }
 });
+
+export const setHearingType = (hearingType) => ({
+  type: ACTIONS.SET_HEARING_TYPE,
+  payload: {
+    hearingType
+  },
+  meta: {
+    analytics: {
+      label: hearingType
+    }
+  }
+});

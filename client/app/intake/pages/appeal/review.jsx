@@ -12,6 +12,7 @@ const reviewAppealSchema = yup.object().shape({
   ...receiptDateInputValidation(true),
   'filed-by-va-gov': yup.string(),
   'docket-type': yup.string().required(GENERIC_FORM_ERRORS.blank),
+  'hearing-type': yup.string(),
   'different-claimant-option': yup.string().required(GENERIC_FORM_ERRORS.blank),
   'legacy-opt-in': yup.string().required(GENERIC_FORM_ERRORS.blank),
   ...selectClaimantValidations()
