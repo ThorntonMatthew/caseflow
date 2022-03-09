@@ -91,7 +91,7 @@ const formFieldMapping = (props) => {
     </div>,
     'hearing-type':
     (props.docketType === 'hearing' ?
-      (<div className="cs-hearing-type" style={{marginTop: '10px' }}>
+      (<div className="cs-hearing-type" style={{ marginTop: '10px' }}>
         <SearchableDropdown
           name="hearing-type"
           label="Hearing Type"
