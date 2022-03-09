@@ -6,7 +6,7 @@ import { reject, map } from 'lodash';
 import RadioField from '../../components/RadioField';
 import ReceiptDateInput from './receiptDateInput';
 import SearchableDropdown from '../../components/SearchableDropdown';
-import { setDocketType, setHearingType } from '../actions/appeal';
+import { setDocketType, setOriginalHearingRequestType } from '../actions/appeal';
 import { setReceiptDate, setOptionSelected } from '../actions/intake';
 import { setAppealDocket, confirmIneligibleForm } from '../actions/rampRefiling';
 import { toggleIneligibleError, convertStringToBoolean } from '../util';
@@ -40,7 +40,7 @@ const docketTypeRadioOptions = [
     displayText: 'Hearing' }
 ];
 
-const hearingTypeOpts = [
+const originalHearingRequestTypeOpts = [
   // Words in values should be delineated by underscores
   // See issues.js for how they will be displayed on Add/Remove Issues page
   { value: 'hard_at', label: 'Hard at Hearing' },
@@ -97,16 +97,16 @@ const formFieldMapping = (props) => {
         <SearchableDropdown
           name="hearing-type"
           label="Hearing Type"
-          options={hearingTypeOpts}
-          value={props.hearingType}
+          options={originalHearingRequestTypeOpts}
+          value={props.originalHearingRequestType}
           inputRef={props.register} //Don't think this is correct
           onChange={(valObj) => {
-            props.setHearingType(valObj.value);
+            props.setOriginalHearingRequestType(valObj.value);
           }}
           strongLabel
         />
       </div>) :
-      // probably need to validate that hearingType = null
+      // probably need to validate that originalHearingRequestTypee = null
       // if docketType is changed from hearing.
       null),
 
@@ -290,8 +290,8 @@ FormGenerator.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.array,
   intakeId: PropTypes.string,
-  hearingType: PropTypes.string,
-  setHearingType: PropTypes.func,
+  originalHearingRequestType: PropTypes.string,
+  setOriginalHearingRequestType: PropTypes.func,
 };
 
 export default connect(
@@ -322,11 +322,11 @@ export default connect(
     veteranInvalidFields: state[props.formName].veteranInvalidFields,
     hasInvalidOption: state[props.formName].hasInvalidOption,
     confirmIneligibleForm: state[props.formName].confirmIneligibleForm,
-    hearingType: state[props.formName].hearingType,
+    originalHearingRequestType: state[props.formName].originalHearingRequestType,
   }),
   (dispatch) => bindActionCreators({
     setDocketType,
-    setHearingType,
+    setOriginalHearingRequestType,
     setReceiptDate,
     setLegacyOptInApproved,
     setInformalConference,

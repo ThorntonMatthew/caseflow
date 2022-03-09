@@ -42,9 +42,7 @@ class IntakesController < ApplicationController
   validates :review, using: IntakesSchemas.review
   def review
     if intake.review!(params)
-      reviewed_intake = intake.ui_hash
-      reviewed_intake[:hearingType] = params[:hearing_type]
-      render json: reviewed_intake
+      render json: intake.ui_hash
     else
       render json: { error_codes: intake.review_errors }, status: :unprocessable_entity
     end
