@@ -43,7 +43,7 @@ class IntakesController < ApplicationController
   def review
     if intake.review!(params)
       reviewed_intake = intake.ui_hash
-      reviewed_intake[:hearing_type] = params[:hearing_type]
+      reviewed_intake[:hearingType] = params[:hearing_type]
       render json: reviewed_intake
     else
       render json: { error_codes: intake.review_errors }, status: :unprocessable_entity

@@ -41,8 +41,10 @@ const docketTypeRadioOptions = [
 ];
 
 const hearingTypeOpts = [
-  { value: 'hard-at', label: 'Hard at Hearing' },
-  { value: 'loud-clear', label: 'Loud and Clear' },
+  // Words in values should be delineated by underscores
+  // See issues.js for how they will be displayed on Add/Remove Issues page
+  { value: 'hard_at', label: 'Hard at Hearing' },
+  { value: 'loud_clear', label: 'Loud and Clear' },
   { value: 'herring', label: 'Did you mean herring?' },
 ];
 
