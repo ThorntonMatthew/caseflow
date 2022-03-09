@@ -23,8 +23,8 @@ const updateFromServerIntake = (state, serverIntake) => {
       $set: serverIntake.docketType
     },
     hearingType: {
-      $set: serverIntake.hearingType
-    }
+      $set: serverIntake.docketType === 'hearing' ? serverIntake.hearingType : null
+    },
   });
 };
 
