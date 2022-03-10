@@ -43,9 +43,10 @@ const docketTypeRadioOptions = [
 const originalHearingRequestTypeOpts = [
   // Words in values should be delineated by underscores
   // See issues.js for how they will be displayed on Add/Remove Issues page
-  { value: 'hard_at', label: 'Hard at Hearing' },
-  { value: 'loud_clear', label: 'Loud and Clear' },
-  { value: 'herring', label: 'Did you mean herring?' },
+  { value: 'central_office', label: 'Central Office' },
+  { value: 'travel_board', label: 'Travel Board' },
+  { value: 'video', label: 'Video' },
+  { value: 'virtual', label: 'Virtual' },
 ];
 
 const rampElectionReviewOptions = reject(REVIEW_OPTIONS, REVIEW_OPTIONS.APPEAL);
