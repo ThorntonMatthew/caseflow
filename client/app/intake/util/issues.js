@@ -321,7 +321,7 @@ export const getAddIssuesFields = (formType, veteran, intakeData) => {
         fields.findIndex((entry) => entry.field === 'Review option') + 1,
         0,
         { field: 'Hearing type',
-          content: _.startCase(intakeData?.originalHearingRequestType?.split('_').join(' ')) }
+          content: _.startCase((intakeData.originalHearingRequestType || 'none_selected').split('_').join(' ')) }
       );
     }
     break;
