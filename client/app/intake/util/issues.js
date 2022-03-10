@@ -324,7 +324,6 @@ export const getAddIssuesFields = (formType, veteran, intakeData) => {
           content: _.startCase(intakeData?.originalHearingRequestType?.split('_').join(' ')) }
       );
     }
-
     break;
   default:
     fields = [];
