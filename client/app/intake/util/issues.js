@@ -310,11 +310,21 @@ export const getAddIssuesFields = (formType, veteran, intakeData) => {
         content: formatDateStr(intakeData.receiptDate) },
       { field: 'Review option',
         content: _.startCase(intakeData?.docketType?.split('_').join(' ')) },
-      { field: 'Hearing type',
-        content: _.startCase(intakeData?.originalHearingRequestType?.split('_').join(' ')) },
       { field: 'SOC/SSOC Opt-in',
         content: intakeData.legacyOptInApproved ? 'Yes' : 'No' },
     ];
+
+    if (intakeData.docketType === 'hearing') {
+      // If docket_type/Review option is 'Hearing' then place
+      // the hearing type row after the Review option row.
+      fields.splice(
+        fields.findIndex((entry) => entry.field === 'Review option') + 1,
+        0,
+        { field: 'Hearing type',
+          content: _.startCase(intakeData?.originalHearingRequestType?.split('_').join(' ')) }
+      );
+    }
+
     break;
   default:
     fields = [];
