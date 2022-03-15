@@ -310,24 +310,19 @@ export const getAddIssuesFields = (formType, veteran, intakeData) => {
         content: formatDateStr(intakeData.receiptDate) },
       { field: 'Review option',
         content: _.startCase(intakeData.docketType?.split('_').join(' ')) },
+      // Add hearing type row if docket type is a hearing and the hearing type isn't null
+      (intakeData.docketType === 'hearing' && intakeData.originalHearingRequestType) ? { field: 'Hearing type',
+        content: _.startCase(intakeData.originalHearingRequestType.split('_').join(' ')) } : null,
       { field: 'SOC/SSOC Opt-in',
         content: intakeData.legacyOptInApproved ? 'Yes' : 'No' },
     ];
-
-    if (intakeData.docketType === 'hearing' && intakeData.originalHearingRequestType) {
-      // If docket_type/Review option is 'Hearing' then place
-      // the hearing type row after the Review option row.
-      fields.splice(
-        fields.findIndex((entry) => entry.field === 'Review option') + 1,
-        0,
-        { field: 'Hearing type',
-          content: _.startCase(intakeData.originalHearingRequestType.split('_').join(' ')) }
-      );
-    }
     break;
   default:
     fields = [];
   }
+
+  // If a field is to be conditionally rendered set field = null to have it not show
+  fields = fields.filter((field) => field !== null);
 
   let claimantField = getClaimantField(veteran, intakeData);
 
