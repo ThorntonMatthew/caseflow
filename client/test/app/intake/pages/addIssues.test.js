@@ -139,6 +139,7 @@ const testIntakes = [
 ];
 
 const hearingTypeIsPresent = (fields) => {
+  // findIndex returns -1 if an entry with field = 'hearing type' isn't found.
   let idx = fields.findIndex((entry) => entry.field.toLowerCase() === 'hearing type');
 
   return idx !== -1;
