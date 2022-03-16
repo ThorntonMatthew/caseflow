@@ -17,7 +17,7 @@ describe('Hearing type field', () => {
     expect(hearingTypeIsPresent(fields)).toBe(false);
   });
 
-  it('is not present because hearing type is null', async () => {
+  it('is not present because hearing type is null despite docket type being hearing', async () => {
     const fields = getAddIssuesFields('appeal', testVeteran, getAddIssuesFieldsSamples[1]);
 
     expect(hearingTypeIsPresent(fields)).toBe(false);

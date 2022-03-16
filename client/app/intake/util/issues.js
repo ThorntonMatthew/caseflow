@@ -311,8 +311,8 @@ export const getAddIssuesFields = (formType, veteran, intakeData) => {
       { field: 'Review option',
         content: _.startCase(intakeData.docketType?.split('_').join(' ')) },
       // Add hearing type row if docket type is a hearing and the hearing type isn't null
-      (intakeData.docketType === 'hearing' && intakeData.originalHearingRequestType) ? { field: 'Hearing type',
-        content: _.startCase(intakeData.originalHearingRequestType.split('_').join(' ')) } : null,
+      (intakeData.docketType === 'hearing' && intakeData.hearingType) ? { field: 'Hearing type',
+        content: _.startCase(intakeData.hearingType.split('_').join(' ')) } : null,
       { field: 'SOC/SSOC Opt-in',
         content: intakeData.legacyOptInApproved ? 'Yes' : 'No' },
     ];

@@ -12,14 +12,14 @@ export const setDocketType = (docketType) => ({
   }
 });
 
-export const setOriginalHearingRequestType = (originalHearingRequestType) => ({
-  type: ACTIONS.SET_ORIGINAL_HEARING_REQUEST_TYPE,
+export const setHearingType = (hearingType) => ({
+  type: ACTIONS.SET_HEARING_TYPE,
   payload: {
-    originalHearingRequestType
+    hearingType
   },
   meta: {
     analytics: {
-      label: originalHearingRequestType
+      label: hearingType
     }
   }
 });
