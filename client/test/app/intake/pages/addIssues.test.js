@@ -16,7 +16,7 @@ const hearingTypeIsPresent = (fields) => {
   return idx !== -1;
 };
 
-describe('getAddIssueFields - Hearing type field', () => {
+describe('getAddIssueFields - form_type: appeal - Hearing type field', () => {
   it('is not present because docket type is not hearing', async () => {
     const fields = getAddIssuesFields(
       'appeal',
