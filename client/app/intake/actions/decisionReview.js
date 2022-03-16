@@ -81,7 +81,19 @@ export const setFiledByVaGov = (filedByVaGov) => ({
   payload: {
     filedByVaGov
   }
-})
+});
+
+export const setHearingType = (hearingType) => ({
+  type: ACTIONS.SET_HEARING_TYPE,
+  payload: {
+    hearingType
+  },
+  meta: {
+    analytics: {
+      label: hearingType
+    }
+  }
+});
 
 export const setLegacyOptInApproved = (legacyOptInApproved) => ({
   type: ACTIONS.SET_LEGACY_OPT_IN_APPROVED,
