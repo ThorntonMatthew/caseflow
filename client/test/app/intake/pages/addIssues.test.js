@@ -10,7 +10,7 @@ const hearingTypeIsPresent = (fields) => {
   return idx !== -1;
 };
 
-describe('Hearing type field', () => {
+describe('getAddIssueFields - Hearing type field', () => {
   it('is not present because docket type is not hearing', async () => {
     const fields = getAddIssuesFields('appeal', testVeteran, getAddIssuesFieldsSamples[0]);
 
