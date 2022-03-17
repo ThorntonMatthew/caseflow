@@ -81,6 +81,8 @@ const formFieldMapping = (props) => {
         value={props.docketType}
         inputRef={props.register}
       />
+
+    {(props.featureToggles.updatedAppealsForm && props.docketType === 'hearing') && <h1>Hearings Dropdown Goes Here</h1>}
     </div>,
     'legacy-opt-in': <LegacyOptInApproved
       value={props.legacyOptInApproved}

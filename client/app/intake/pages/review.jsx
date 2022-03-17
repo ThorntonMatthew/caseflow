@@ -134,6 +134,7 @@ const Review = (props) => {
     <form
       onSubmit={formProps.handleSubmit(handleClick)}
     >
+
       <SwitchOnForm
         formComponentMapping={formComponentMapping}
         componentForNoFormSelected={<Redirect to={PAGE_PATHS.BEGIN} />}

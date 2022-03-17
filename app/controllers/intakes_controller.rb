@@ -42,7 +42,9 @@ class IntakesController < ApplicationController
   validates :review, using: IntakesSchemas.review
   def review
     if intake.review!(params)
-      render json: intake.ui_hash
+      reviewed_intake = intake.ui_hash
+      reviewed_intake[:originalHearingRequestType] = nil
+      render json: reviewed_intake
     else
       render json: { error_codes: intake.review_errors }, status: :unprocessable_entity
     end
@@ -109,7 +111,8 @@ class IntakesController < ApplicationController
         covidTimelinessExemption: FeatureToggle.enabled?(:covid_timeliness_exemption, user: current_user),
         filedByVaGovHlr: FeatureToggle.enabled?(:filed_by_va_gov_hlr, user: current_user),
         vhaPreDocketAppeals: FeatureToggle.enabled?(:vha_predocket_appeals, user: current_user),
-        updatedIntakeForms: FeatureToggle.enabled?(:updated_intake_forms, user: current_user)
+        updatedIntakeForms: FeatureToggle.enabled?(:updated_intake_forms, user: current_user),
+        updatedAppealsForm: FeatureToggle.enabled?(:updated_appeals_form, user: current_user)
       }
     }
   rescue StandardError => error
