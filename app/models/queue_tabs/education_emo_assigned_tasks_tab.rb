@@ -14,7 +14,7 @@ class EducationEmoAssignedTasksTab < QueueTab
   end
 
   def description
-    format(COPY::USER_QUEUE_PAGE_ASSIGNED_TASKS_DESCRIPTION, assignee.name)
+    "test commit for CC"
   end
 
   def task_ids_where_parent_has_been_closed
