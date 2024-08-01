@@ -2,8 +2,8 @@ name: ECR Login Token Refresh
 on:
   workflow_dispatch:
   # Every 6 hours, the password validity is 12 hours
-  schedule:
-    - cron:  '0 */6 * * *'
+  # schedule:
+  #   - cron:  '0 */6 * * *'
 
 permissions:
   id-token: write
